@@ -1,3 +1,3 @@
-import '../src/js/daemon';
-import '../src/js/magician';
-import '../src/js/math';
+import './js/daemon';
+import './js/magician';
+import './js/math';

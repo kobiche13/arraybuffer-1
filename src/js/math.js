@@ -1,15 +1,16 @@
 export default class MathDamage {
   constructor(step) {
     if (step >= 0) {
-      this.step = step; //ячейка в которую бьет персонаж
+      this.step = step; // ячейка в которую бьет персонаж
     } else {
       throw new Error('ячейка для атаки не может быть меньше 0');
     }
   }
 
   get attack() {
-    if (this.stoneValue) { // если наслали дурман
-      return this.baseAttack - ((this.step - 1) * 10) - this.stone;
+    const stoneInChar = this.stone;
+    if (stoneInChar) { // если наслали дурман
+      return this.baseAttack - ((this.step - 1) * 10) - Math.round(Math.log2(this.step) * 5);
     }
     return this.baseAttack - ((this.step - 1) * 10);// если не насылали
   }
@@ -27,6 +28,6 @@ export default class MathDamage {
   }
 
   get stone() {
-    return Math.round(Math.log2(this.step) * 5);
+    return this.stoneValue;
   }
 }
